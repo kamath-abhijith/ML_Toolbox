@@ -10,6 +10,7 @@ from keras import Sequential
 from keras.layers.core import Dense
 from keras.optimizers import SGD
 
+#%%
 ## Read mnist data
 train_filename = '/Users/abijithjkamath/Desktop/TECHNOLOGIE/RawData/mnist/train-images-idx3-ubyte'
 with open(train_filename, 'rb') as f:
@@ -35,6 +36,7 @@ with open(test_labels_filename, 'rb') as f:
     shape = tuple(struct.unpack('>I', f.read(4))[0] for d in range(dims))
     mnist_test_labels = np.fromstring(f.read(), dtype=np.uint8).reshape(shape)
 
+#%%
 ## Preprocessing
 [num_test_samples, m,n] = mnist_train.shape
 test_data = mnist_train.reshape(num_test_samples,m*n)/255.0
