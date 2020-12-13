@@ -1,4 +1,5 @@
 ## GRADIENT DESCENT WITH EXACT LINE SEARCH
+#
 # Implements gradient descent for convex quadratic functions
 # with exact line search to select the step size
 #
