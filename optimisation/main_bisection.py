@@ -32,6 +32,7 @@ def bisect(f, interval, max_iterations=100, mode='GS', tol=1e-20):
             rho = (0.5*(1+np.sqrt(5))/(1+0.5*(1+np.sqrt(5))))
         elif mode == 'FS':
             rho = fibo(max_iterations-k)/fibo(max_iterations-k+1)
+        
         d = (x_right-x_left)*rho
         xmin = x_right - d
         xmax = x_left + d
@@ -39,7 +40,7 @@ def bisect(f, interval, max_iterations=100, mode='GS', tol=1e-20):
             x_right = xmax
         else:
             x_left = xmin
-
+        
         if mode == 'GS':
             if 0.5*(x_right-x_left) < tol:
                 break
@@ -47,11 +48,11 @@ def bisect(f, interval, max_iterations=100, mode='GS', tol=1e-20):
     return 0.5*(x_right-x_left), 0.5*(x_right+x_left)
 
 # %% MINIMISATION USING BISECTION SEARCH
-max_iterations = 10
+max_iterations = 9
 interval = (0,1)
 tol, xminFS = bisect(foo, interval, max_iterations, 'FS')
-_, xminGS = bisect(foo, interval, max_iterations, 'GS', tol)
+_, xminGS = bisect(foo, interval, max_iterations+100, 'GS', tol)
 
 print("The minimiser using FS is %.3f with tolerance %.3f"%(xminFS, tol))
-print("The minimiser using GS is %.3f with tolerance %.3f"%(xminGS, tol))
+print("The minimiser using GS is %.3f with tolerance %.3f"%(xminGS, _))
 # %%

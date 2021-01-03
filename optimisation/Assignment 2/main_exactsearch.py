@@ -62,7 +62,7 @@ x_init = np.zeros(4)
 num_iter, x_gd = grad_descent(x_init, quad_grad, A, tol, max_iterations)
 
 print("Gradient descent with exact step size takes %d iterations to solve for the minimiser with an error of %.6f"%(num_iter, tol))
-print("The minimum value is %.2f"%(fx((x_gd[0],x_gd[1]))))
+print("The minimum value is %.2f"%(0.5*x_gd.dot(A.dot(x_gd))-b.dot(x_gd)))
 print("The minimiser is", x_gd)
 
 # %%
