@@ -9,7 +9,7 @@ abijithj@iisc.ac.in
 '''
 
 # %% LOAD LIBRARIES
-
+import os
 import numpy as np
 import pandas as pd
 
@@ -31,13 +31,13 @@ plt.rcParams.update({
     "mathtext.fontset": "cm",
     "font.size": 11})
 
-# path = '/Users/abhijith/Desktop/TECHNOLOGIE/Research/TimeEncodingMachines/Documentation/TEMFRI/TSP/figures/'
-# save = True
+os.makedirs('./results', exist_ok=True)
+path = './results/'
 
 # %% IMPORT DATA
 
-train_data = np.loadtxt('./data/P1b_train_data_2D.txt', delimiter=',', skiprows=1)
-test_data = np.loadtxt('./data/P1b_test_data_2D.txt', delimiter=',', skiprows=1)
+train_data = np.loadtxt('./data/P1c_train_data_2D.txt', delimiter=',', skiprows=1)
+test_data = np.loadtxt('./data/P1c_test_data_2D.txt', delimiter=',', skiprows=1)
 
 # %% TRAIN GMM
 

@@ -22,7 +22,7 @@ from matplotlib.patches import Ellipse
 # %% PLOTTING
 
 def plot_data2D(data, ax=None, title_text=None,
-    xlimits=[-4,10], ylimits=[-4,10], show=True):
+    xlimits=[-4,10], ylimits=[-4,10], show=True, save=False):
     ''' Plots 2D data with labels '''
     if ax is None:
         fig = plt.figure(figsize=(12,6))
@@ -44,6 +44,8 @@ def plot_data2D(data, ax=None, title_text=None,
 
     if show:
         plt.show()
+        if save:
+            plt.savefig(save + '.pdf', format='pdf')
 
     return
 
@@ -68,7 +70,7 @@ def plot_confusion_matrix(data, ax=None, xaxis_label=r'PREDICTED CLASS',
     yaxis_label=r'TRUE CLASS', show=True, save=False):
     ''' Plots confusion matrix '''
     if ax is None:
-        fig = plt.figure(figsize=(12,6))
+        fig = plt.figure(figsize=(6,6))
         ax = plt.gca()
 
     ax = sns.heatmap(data, vmin=0.0, vmax=1.0, linewidths=0.5, annot=True)
@@ -94,12 +96,15 @@ def plot_loss(loss, ax=None, xaxis_label=r'NUMBER OF ITERATIONS',
     plt.xlabel(xaxis_label)
     plt.ylabel(yaxis_label)
     if show:
+        if save:
+            plt.savefig(save + '.pdf', format='pdf')
         plt.show()
 
     return
 
 def plot_boundary(means, covs, priors, ax=None, colour='black',
-    xlimits=[-4,10], ylimits=[-4,10], num_points=100, line_width=2, show=True):
+    xlimits=[-4,10], ylimits=[-4,10], num_points=100, line_width=2,
+    show=True, save=False):
     '''
     Plots the decision boundary for Bayes classifier
     with Gaussian class conditionals
@@ -117,6 +122,8 @@ def plot_boundary(means, covs, priors, ax=None, colour='black',
 
     plt.contour(xx, yy, zz, [0.5], linewidths=line_width, colors=colour)
     if show:
+        if save:
+            plt.savefig(save + '.pdf', format='pdf')
         plt.show()
 
     return
